@@ -1,0 +1,91 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jenny's Portfolio</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <!-- AOS animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Your main CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span></span>
+      </div>
+      <div class="links">
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.html">Home</a></div> 
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div> 
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="gallery.html">Gallery</a></div> 
+        <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="contact.html">Contacts</a></div>
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+    </div>
+
+    <div class="dropdown">
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contacts</a>
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HOME SECTION ===== -->
+  <section>
+  <div class="main-container">
+    <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
+      <img src="pics/cbc81a43-a676-42eb-8045-86add26671f1.jpg" alt=""> 
+    </div>
+
+    <div class="content">
+      <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
+        Hey, I'm <span>Jenny!</span>
+      </h1>
+      <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">
+        Welcome to my portfolio website! I'm excited to share my projects and skills with you. Explore my work and feel free to reach out! <br> <br> If you want to know more about me, press the button below!
+      </p>
+<br>
+      <!-- ✅ Moved this button inside the content div -->
+      <div class="btn-group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="1200">
+        <a href="about.html" class="btn pulse">Click Here!</a>
+      </div>
+    </div>
+  </div>
+  <div class="home-img fade-in">
+      <div class="glow-circle">
+        <img id="slideshow" src="pics/main.png" alt="Profile Picture">
+      </div>
+    </div>
+</section>
+  <!-- ===== FOOTER ===== -->
+  <footer id="contact" class="fade-in">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:arnado.jennymae@llcc.edu.ph">arnado.jennymae@llcc.edu.ph</a></p>
+    <p>Phone: <a href="tel:+639123456789">+63 912 345 6789</a></p>
+    <p class="copyright">© 2025 Jenny Arnado. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+
+    function hamburg() {
+      document.querySelector(".dropdown").style.transform = "translateY(0px)";
+    }
+
+    function cancel() {
+      document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+    }
+  </script>
+</body>
+</html>

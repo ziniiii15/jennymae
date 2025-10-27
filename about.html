@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Jenny's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    :root {
+      --primary: rgb(109,67,0);
+      --secondary: rgb(126,105,97);
+      --text-light: #f8f8f7;
+      --bg-gradient: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+      --accent: #FFD700;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: black;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVIGATION BUTTONS ===== */
+    .nav-buttons {
+      margin: 20px 30px 0 0;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav-buttons a {
+      padding: 8px 20px;
+      border-radius: 25px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background-color: var(--primary);
+      color: var(--text-light);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+      padding: 60px 8%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* ===== RECTANGLE (PROFILE + TEXT) ===== */
+    .about-rectangle {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background: rgba(255, 245, 230, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border: 2px solid rgba(109, 67, 0, 0.4);
+    }
+
+    .slideshow-container {
+  flex: 1 1 200px;
+  max-width: 250px;
+  position: relative;
+}
+
+.glow-square {
+  position: relative;
+  width: 100%;
+  height: 250px;       /* adjust as needed */
+  border-radius: 15px; /* subtle rounded corners, optional */
+  overflow: hidden;
+  box-shadow: 0 0 15px 3px var(--secondary);
+}
+
+.glow-square img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.glow-square img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+    .about-text {
+      flex: 2 1 400px;
+    }
+
+    .about-text h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .about-text p {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* ===== 3 BOXES (SKILLS, HOBBIES, EDUCATION) ===== */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .about-box {
+  flex: 1 1 300px;
+  max-width: 350px;
+  background: rgba(255, 245, 230, 0.8);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center; /* heading stays centered */
+  color: black;
+  border: 2px solid rgba(109, 67, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 400px; /* adjust height for scroll */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-box h3 {
+  color: rgb(109,67,0);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.about-box ul,
+.about-box p {
+  text-align: left;  /* 🔹 content inside box aligned to left */
+  line-height: 3;
+  margin: 0;
+  padding: 0;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+  font-size: 1rem;
+}
+
+
+    .info-list li img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* ===== MORE INFO RECTANGLE ===== */
+    .more-info {
+  background: rgba(255, 245, 230, 0.8);
+  padding: 30px 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(109, 67, 0, 0.4); /* 🟤 Matches box border */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+    .more-info h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .more-info p {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    @media(max-width:900px){
+      .about-rectangle { flex-direction: column; text-align: center; }
+      .about-container { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <div class="nav-buttons">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <!-- ABOUT ME -->
+    <div class="about-rectangle" data-aos="fade-up" data-aos-duration="1000">
+  <div class="slideshow-container">
+    <div class="glow-square" id="slideshow">
+      <img src="pics/j (1).jpg" class="active" alt="">
+      
+      <img src="pics/j (3).jpg" alt="">
+      <img src="pics/j (4).jpg" alt="">
+    </div>
+  </div>
+  <div class="about-text">
+    <h2>About Me</h2>
+    <p>
+      Hi! I'm Jenny Mae B. Arnado, 20 years old and I was born on October 23, 2005. I'm currently living in Masulog, Basak, Lapu-Lapu City. I'm a third-year student pursuing a Bachelor of Science in  Technology with a specialization in Computer Technology at Lapu-Lapu City College.
+    </p>
+  </div>
+</div>
+
+    <!-- 3 BOXES -->
+    <div class="about-container">
+      <div class="about-box" data-aos="fade-up" data-aos-delay="100">
+        <h3><i class="fas fa-code"></i> Skills</h3>
+        <ul class="info-list">
+          <li><img src="pics/canva.jpg" alt=""> Canva</li>
+          <li><img src="pics/video-editing-icon.jpg" alt=""> Video Editing</li>
+          <li><img src="pics/coding.png" alt=""> Coding</li>
+        </ul>
+      </div>
+
+      <div class="about-box" data-aos="fade-up" data-aos-delay="200">
+        <h3><i class="fas fa-heart"></i> Hobbies</h3>
+        <ul class="info-list">
+          <li><img src="pics/chess-icon.jpg" alt=""> Chess</li>
+          <li><img src="pics/volleyball-icon-.jpg" alt=""> Volleyball</li>
+          <li><img src="pics/588da7a4f99c81c8f7d6053790378c58.png" alt=""> Cooking</li>
+          <li><img src="pics/singing.png" alt=""> Singing</li>
+          <li><img src="pics/music-icon-.webp" alt=""> Music</li>
+        </ul>
+      </div>
+
+      <div class="about-box" data-aos="fade-up" data-aos-delay="300">
+        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <p><strong>BSIT (Computer Technology)</strong></p>
+        <p>Lapu-Lapu City College</p>
+        <p>2025 - Present</p>
+      </div>
+    </div>
+
+    <!-- MORE INFO -->
+    <div class="more-info" data-aos="fade-up" data-aos-delay="400">
+      <h3><i class="fas fa-info-circle"></i> More Information</h3>
+      <p>
+        I’m currently expanding my knowledge in web frameworks and UI/UX design.
+        I aim to specialize in frontend development, combining functionality and creativity 
+        to deliver engaging web experiences.
+      </p>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+
+    // Slideshow
+    const slides = document.querySelectorAll('#slideshow img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3500);
+
+    // ===== ABOUT SECTION ANIMATION TRIGGER =====
+window.addEventListener("scroll", () => {
+  const elements = document.querySelectorAll(".animate-left, .animate-right, .animate-up, .animate-bottom");
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add("show-animate");
+    }
+  });
+});
+  </script>
+</body>
+</html>
